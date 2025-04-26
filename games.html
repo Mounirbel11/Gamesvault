@@ -1,0 +1,1443 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GameVault - Premium Mobile Games</title>
+    <style>
+/* Base Styles */
+:root {
+  /* Primary Colors */
+  --primary-100: #EDE7F6;
+  --primary-200: #D1C4E9;
+  --primary-300: #B39DDB;
+  --primary-400: #9575CD;
+  --primary-500: #7E57C2;
+  --primary-600: #673AB7;
+  --primary-700: #5E35B1;
+  --primary-800: #512DA8;
+  --primary-900: #4527A0;
+  --primary-950: #311B92;
+  
+  /* Accent Colors */
+  --accent-300: #FF80AB;
+  --accent-500: #FF4081;
+  --accent-700: #F50057;
+  
+  /* Neutral Colors */
+  --neutral-50: #FAFAFA;
+  --neutral-100: #F5F5F5;
+  --neutral-200: #EEEEEE;
+  --neutral-300: #E0E0E0;
+  --neutral-400: #BDBDBD;
+  --neutral-500: #9E9E9E;
+  --neutral-600: #757575;
+  --neutral-700: #616161;
+  --neutral-800: #424242;
+  --neutral-900: #212121;
+  --neutral-950: #121212;
+  
+  /* Status Colors */
+  --success: #00C853;
+  --warning: #FFD600;
+  --error: #FF1744;
+  
+  /* Fonts */
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  
+  /* Spacing (8px system) */
+  --space-1: 0.25rem;  /* 4px */
+  --space-2: 0.5rem;   /* 8px */
+  --space-3: 1rem;     /* 16px */
+  --space-4: 1.5rem;   /* 24px */
+  --space-5: 2rem;     /* 32px */
+  --space-6: 3rem;     /* 48px */
+  --space-7: 4rem;     /* 64px */
+  
+  /* Border Radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+  --radius-full: 9999px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-primary);
+  line-height: 1.5;
+  color: var(--neutral-100);
+  background-color: var(--neutral-950);
+  overflow-x: hidden;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-3);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--accent-500);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: var(--space-3);
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+p {
+  margin-bottom: var(--space-3);
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  outline: none;
+}
+
+.btn-primary {
+  background-color: var(--primary-600);
+  color: var(--neutral-50);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-700);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--neutral-50);
+  border: 2px solid var(--primary-600);
+}
+
+.btn-secondary:hover {
+  background-color: rgba(103, 58, 183, 0.1);
+  transform: translateY(-2px);
+}
+
+.btn-cta {
+  background-color: var(--accent-500);
+  color: var(--neutral-50);
+  font-weight: 700;
+  padding: var(--space-2) var(--space-4);
+}
+
+.btn-cta:hover {
+  background-color: var(--accent-700);
+  color: var(--neutral-50);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 64, 129, 0.3);
+}
+
+.btn-large {
+  padding: var(--space-3) var(--space-5);
+  font-size: 1.25rem;
+}
+
+/* Header Styles */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: rgba(18, 18, 18, 0.8);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.header-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-3) 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-300);
+  background: linear-gradient(90deg, var(--primary-400), var(--accent-500));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.nav-list {
+  display: flex;
+  gap: var(--space-4);
+}
+
+.nav-item a {
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-item a:hover {
+  color: var(--primary-300);
+}
+
+.menu-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  background-color: var(--neutral-100);
+  transition: all 0.3s ease;
+}
+
+/* Sections */
+section {
+  padding: var(--space-6) 0;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: var(--space-5);
+}
+
+.section-title {
+  font-size: 2.25rem;
+  margin-bottom: var(--space-2);
+  background: linear-gradient(90deg, var(--primary-400), var(--accent-500));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+.section-subtitle {
+  color: var(--neutral-400);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Hero Section */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, var(--primary-950), var(--neutral-950));
+  position: relative;
+  overflow: hidden;
+  padding-top: 80px;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://images.pexels.com/photos/735911/pexels-photo-735911.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.15;
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  margin-bottom: var(--space-3);
+  line-height: 1.1;
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 4vw, 1.25rem);
+  color: var(--neutral-300);
+  margin-bottom: var(--space-4);
+}
+
+.hero-cta {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+/* Featured Games Slider */
+.featured-slider {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-3);
+  height: 400px;
+}
+
+.featured-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background-size: cover;
+  background-position: center;
+  padding: var(--space-4);
+}
+
+.featured-slide.active {
+  opacity: 1;
+  z-index: 2;
+}
+
+.featured-slide::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 70%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+  z-index: -1;
+}
+
+.featured-slide-content {
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+}
+
+.featured-game-category {
+  display: inline-block;
+  background-color: var(--primary-600);
+  color: var(--neutral-50);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: var(--space-2);
+  text-transform: uppercase;
+}
+
+.featured-game-title {
+  font-size: 2rem;
+  margin-bottom: var(--space-2);
+}
+
+.featured-game-description {
+  color: var(--neutral-300);
+  margin-bottom: var(--space-3);
+}
+
+.slider-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.slider-arrow {
+  background-color: var(--primary-600);
+  color: var(--neutral-50);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  font-size: 1.25rem;
+  transition: all 0.3s ease;
+}
+
+.slider-arrow:hover {
+  background-color: var(--primary-700);
+  transform: scale(1.05);
+}
+
+.slider-dots {
+  display: flex;
+  gap: var(--space-1);
+}
+
+.slider-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--neutral-600);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.slider-dot.active {
+  background-color: var(--primary-500);
+  transform: scale(1.2);
+}
+
+/* Limited Time Offers */
+.offers-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-4);
+}
+
+.offer-card {
+  background: linear-gradient(135deg, var(--neutral-900), var(--neutral-800));
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.offer-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.offer-card.spotlight {
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, var(--primary-900), var(--neutral-900));
+  border: 1px solid var(--primary-700);
+}
+
+.offer-timer {
+  position: absolute;
+  top: var(--space-2);
+  right: var(--space-2);
+  background-color: var(--accent-700);
+  color: var(--neutral-50);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 0.875rem;
+}
+
+.offer-content {
+  padding: var(--space-4);
+}
+
+.offer-title {
+  font-size: 1.5rem;
+  margin-bottom: var(--space-2);
+}
+
+.offer-description {
+  color: var(--neutral-300);
+  margin-bottom: var(--space-3);
+}
+
+.offer-bonus {
+  margin-bottom: var(--space-3);
+}
+
+.bonus-tag {
+  display: inline-block;
+  background-color: var(--success);
+  color: var(--neutral-950);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-full);
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+/* Game Categories */
+.categories-tabs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.tab-btn {
+  background-color: var(--neutral-800);
+  color: var(--neutral-300);
+  border: none;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.tab-btn:hover {
+  background-color: var(--neutral-700);
+  color: var(--neutral-100);
+}
+
+.tab-btn.active {
+  background-color: var(--primary-600);
+  color: var(--neutral-50);
+}
+
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: var(--space-4);
+}
+
+.game-card {
+  background-color: var(--neutral-900);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.game-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.game-image {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.game-image-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.game-image-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+}
+
+.game-content {
+  padding: var(--space-3);
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.game-title {
+  font-size: 1.25rem;
+  margin-bottom: var(--space-2);
+}
+
+.game-description {
+  color: var(--neutral-400);
+  font-size: 0.875rem;
+  margin-bottom: var(--space-3);
+  flex-grow: 1;
+}
+
+.game-cta {
+  text-align: center;
+}
+
+/* Footer */
+.footer {
+  background-color: var(--neutral-900);
+  padding: var(--space-6) 0 var(--space-3);
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+}
+
+.footer-logo {
+  margin-bottom: var(--space-3);
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-5);
+}
+
+.footer-heading {
+  font-size: 1.1rem;
+  margin-bottom: var(--space-3);
+  color: var(--neutral-300);
+}
+
+.footer-list li {
+  margin-bottom: var(--space-2);
+}
+
+.footer-list a {
+  color: var(--neutral-500);
+  transition: color 0.3s ease;
+}
+
+.footer-list a:hover {
+  color: var(--primary-300);
+}
+
+.footer-bottom {
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--neutral-800);
+}
+
+.copyright {
+  color: var(--neutral-600);
+  text-align: center;
+}
+
+/* Final CTA Section */
+.final-cta {
+  background: linear-gradient(135deg, var(--primary-800), var(--primary-950));
+  text-align: center;
+  padding: var(--space-6) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.final-cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://images.pexels.com/photos/1174746/pexels-photo-1174746.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.1;
+  z-index: 0;
+}
+
+.cta-content {
+  position: relative;
+  z-index: 1;
+}
+
+.cta-title {
+  font-size: 2.5rem;
+  margin-bottom: var(--space-2);
+}
+
+.cta-description {
+  font-size: 1.25rem;
+  max-width: 600px;
+  margin: 0 auto var(--space-4);
+  color: var(--neutral-300);
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 64, 129, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(255, 64, 129, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 64, 129, 0);
+  }
+}
+
+/* Responsive Styles */
+@media (max-width: 576px) {
+  :root {
+    font-size: 14px;
+  }
+  
+  .hero-cta {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .btn {
+    width: 100%;
+  }
+  
+  .featured-slider {
+    height: 300px;
+  }
+  
+  .featured-game-title {
+    font-size: 1.5rem;
+  }
+
+  .footer-content {
+    flex-direction: column;
+  }
+  
+  .footer-links {
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+  
+  .section-title {
+    font-size: 1.75rem;
+  }
+  
+  .offer-card.spotlight {
+    grid-column: 1;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .games-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .footer-links {
+    gap: var(--space-3);
+  }
+  
+  .featured-slider {
+    height: 350px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .games-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    height: 100vh;
+    background-color: var(--neutral-900);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: right 0.3s ease;
+    z-index: 1000;
+  }
+  
+  .nav-menu.active {
+    right: 0;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  .nav-list {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .nav-item {
+    margin: var(--space-3) 0;
+  }
+  
+  .menu-toggle {
+    display: block;
+    z-index: 1001;
+  }
+  
+  .menu-toggle.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  
+  .menu-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .menu-toggle.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+}
+
+@media (min-width: 992px) {
+  .games-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .offers-wrapper {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .offer-card.spotlight {
+    grid-column: span 3;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+  
+  .offer-card.spotlight .offer-content {
+    padding: var(--space-5);
+  }
+  
+  .featured-slider {
+    height: 450px;
+  }
+  
+  .featured-slide-content {
+    max-width: 50%;
+  }
+}
+
+@media (hover: hover) {
+  .btn-primary:hover {
+    background-color: var(--primary-700);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .btn-secondary:hover {
+    background-color: rgba(103, 58, 183, 0.1);
+    transform: translateY(-2px);
+  }
+  
+  .btn-cta:hover {
+    background-color: var(--accent-700);
+    color: var(--neutral-50);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 64, 129, 0.3);
+  }
+  
+  .game-card:hover .game-image {
+    transform: scale(1.05);
+  }
+}
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <!-- Header Navigation -->
+      <header class="header">
+        <div class="container">
+          <div class="header-wrapper">
+            <div class="logo">
+              <span class="logo-text">GameVault</span>
+            </div>
+            <nav class="nav-menu">
+              <ul class="nav-list">
+                <li class="nav-item"><a href="#featured">Featured</a></li>
+                <li class="nav-item"><a href="#categories">Categories</a></li>
+                <li class="nav-item"><a href="#limited-offers">Offers</a></li>
+              </ul>
+            </nav>
+            <button class="menu-toggle" id="menuToggle">
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Hero Section -->
+      <section class="hero">
+        <div class="container">
+          <div class="hero-content">
+            <h1 class="hero-title">Discover Premium Mobile Games</h1>
+            <p class="hero-subtitle">Get exclusive rewards and bonuses when you download through GameVault</p>
+            <div class="hero-cta">
+              <a href="#featured" class="btn btn-primary">Explore Games</a>
+              <a href="#limited-offers" class="btn btn-secondary">View Offers</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Featured Games Section -->
+      <section class="featured" id="featured">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Featured Games</h2>
+            <p class="section-subtitle">Handpicked premium titles just for you</p>
+          </div>
+          <div class="featured-slider" id="featuredSlider">
+            <!-- Slider content will be inserted by JavaScript -->
+          </div>
+          <div class="slider-controls">
+            <button class="slider-arrow prev" id="prevFeatured">&lt;</button>
+            <div class="slider-dots" id="featuredDots"></div>
+            <button class="slider-arrow next" id="nextFeatured">&gt;</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Limited Time Offers -->
+      <section class="limited-offers" id="limited-offers">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Limited Time Offers</h2>
+            <p class="section-subtitle">Exclusive deals ending soon!</p>
+          </div>
+          <div class="offers-wrapper">
+            <div class="offer-card spotlight">
+              <div class="offer-timer" id="offerTimer">23:59:59</div>
+              <div class="offer-content">
+                <h3 class="offer-title">Genshin Impact</h3>
+                <p class="offer-description">Download now and claim 2000 Primogems + 10 Intertwined Fates!</p>
+                <div class="offer-bonus">
+                  <span class="bonus-tag">+50% Bonus</span>
+                </div>
+                <a href="#" class="btn btn-cta">Claim Reward Now</a>
+              </div>
+            </div>
+            <div class="offer-card">
+              <div class="offer-content">
+                <h3 class="offer-title">RAID: Shadow Legends</h3>
+                <p class="offer-description">New players get 50 free summons and 100,000 silver!</p>
+                <div class="offer-bonus">
+                  <span class="bonus-tag">Limited Offer</span>
+                </div>
+                <a href="#" class="btn btn-cta">Download Now</a>
+              </div>
+            </div>
+            <div class="offer-card">
+              <div class="offer-content">
+                <h3 class="offer-title">Clash of Clans</h3>
+                <p class="offer-description">Start with 500 gems and a 7-day shield!</p>
+                <div class="offer-bonus">
+                  <span class="bonus-tag">New Players</span>
+                </div>
+                <a href="#" class="btn btn-cta">Get Started</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Game Categories -->
+      <section class="categories" id="categories">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Game Categories</h2>
+            <p class="section-subtitle">Find your next favorite game</p>
+          </div>
+          <div class="categories-tabs">
+            <button class="tab-btn active" data-category="rpg">RPG</button>
+            <button class="tab-btn" data-category="puzzle">Puzzle</button>
+            <button class="tab-btn" data-category="strategy">Strategy</button>
+            <button class="tab-btn" data-category="action">Action</button>
+          </div>
+          <div class="games-grid" id="gamesGrid">
+            <!-- Game cards will be inserted by JavaScript -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Final CTA -->
+      <section class="final-cta">
+        <div class="container">
+          <div class="cta-content">
+            <h2 class="cta-title">Ready to Play?</h2>
+            <p class="cta-description">Download premium games with exclusive rewards today!</p>
+            <a href="#" class="btn btn-large btn-cta pulse">Download Now</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="container">
+          <div class="footer-content">
+            <div class="footer-logo">
+              <span class="logo-text">GameVault</span>
+            </div>
+            <div class="footer-links">
+              <div class="footer-column">
+                <h3 class="footer-heading">Company</h3>
+                <ul class="footer-list">
+                  <li><a href="#">About Us</a></li>
+                  <li><a href="#">Contact</a></li>
+                  <li><a href="#">Careers</a></li>
+                </ul>
+              </div>
+              <div class="footer-column">
+                <h3 class="footer-heading">Support</h3>
+                <ul class="footer-list">
+                  <li><a href="#">Help Center</a></li>
+                  <li><a href="#">FAQs</a></li>
+                  <li><a href="#">Community</a></li>
+                </ul>
+              </div>
+              <div class="footer-column">
+                <h3 class="footer-heading">Legal</h3>
+                <ul class="footer-list">
+                  <li><a href="#">Terms of Service</a></li>
+                  <li><a href="#">Privacy Policy</a></li>
+                  <li><a href="#">Cookie Policy</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <p class="copyright">© 2025 GameVault. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      // Game data organized by categories
+      const games = {
+        rpg: [
+          {
+            id: 'genshin-impact',
+            title: 'Genshin Impact',
+            description: 'Open-world action RPG with gacha mechanics. Explore the vast world of Teyvat and master the seven elements.',
+            image: 'https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/01/genshin-impact-main-characters-resting.jpg',
+            featured: true
+          },
+          {
+            id: 'raid-shadow-legends',
+            title: 'RAID: Shadow Legends',
+            description: 'Collect champions and battle through a dark fantasy world with stunning visuals and strategic combat.',
+            image: 'https://www.alucare.fr/wp-content/uploads/2024/05/www.alucare.fr-guide-raid-shadow-legends-Guide-Raid-Shadow-Legends-1.jpg',
+            featured: true
+          },
+          {
+            id: 'epic-seven',
+            title: 'Epic Seven',
+            description: 'Anime-style RPG with unique animated cutscenes. Collect heroes and engage in turn-based tactical combat.',
+            image: 'https://mmoculture.com/wp-content/uploads/2018/05/Epic-Seven.jpg',
+            featured: false
+          },
+          {
+            id: 'summoners-war',
+            title: 'Summoners War',
+            description: 'Strategic battle RPG where you collect and evolve monsters to fight in turn-based PvP and PvE content.',
+            image: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2426960/a41dd413a8c76cfaef5fd0593781a3ee51597ad4/capsule_616x353.jpg?t=1744445222',
+            featured: false
+          },
+          {
+            id: 'afk-arena',
+            title: 'AFK Arena',
+            description: 'Idle RPG where you can progress even when offline. Collect and upgrade heroes to defeat powerful enemies.',
+            image: 'https://media.pocketgamer.com/artwork/na-31366-1611190432/afk%20arena%20ios%20android%20image.JPG',
+            featured: false
+          }
+        ],
+        puzzle: [
+          {
+            id: 'candy-crush-saga',
+            title: 'Candy Crush Saga',
+            description: 'Match colorful candies in this challenging puzzle game with thousands of levels to conquer.',
+            image: 'https://img.freepik.com/free-photo/fairy-tale-world-with-delicious-candy_23-2150799042.jpg?t=st=1745671660~exp=1745675260~hmac=cd1ee69a1c2a6a96293ea0d808cb55fc6f9b204981d93997c8b7429ad212a9a8&w=996',
+            featured: true
+          },
+          {
+            id: 'homescapes',
+            title: 'Homescapes',
+            description: 'Help Austin the butler renovate the mansion by solving match-3 puzzles and making decoration choices.',
+            image: 'https://miro.medium.com/v2/resize:fit:1152/0*YViKlVlWZxDByQB_.jpeg',
+            featured: false
+          },
+          {
+            id: 'toon-blast',
+            title: 'Toon Blast',
+            description: 'Tap matching blocks to solve puzzles and help cartoon characters overcome challenges.',
+            image: 'https://d2duuy9yo5pldo.cloudfront.net/dashboard-resources/peakgames/e900e33c-5993-4e6d-9d9e-b6a54851403d.jpg',
+            featured: false
+          },
+          {
+            id: 'brain-test',
+            title: 'Brain Test: Tricky Puzzles',
+            description: 'Think outside the box to solve tricky puzzles and train your brain with creative solutions.',
+            image: 'https://playgama.com/cdn-cgi/imagedelivery/LN2S-4p3-GgZvEx3IPaKUA/1aa84c62-4765-4294-b40f-9e86b97c1b00/enlarged',
+            featured: false
+          },
+          {
+            id: 'project-makeover',
+            title: 'Project Makeover',
+            description: 'Transform clients with fashion makeovers by solving match-3 puzzles and designing stylish looks.',
+            image: 'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/1e/bb/b0/1ebbb017-46c6-a599-32ec-6b2698f4eb98/ebec0da2-85e0-418d-af4d-90db5fa19285_7.jpg/643x0w.jpg',
+            featured: false
+          }
+        ],
+        strategy: [
+          {
+            id: 'clash-of-clans',
+            title: 'Clash of Clans',
+            description: 'Build your village, train troops, and battle players worldwide in this epic strategy game.',
+            image: 'https://img.freepik.com/free-photo/fantasy-landscape-floating-islands-illustration_23-2151844191.jpg?t=st=1745671104~exp=1745674704~hmac=e3b45345e64f6fdb38050665e3ec1500ac4a85ca666a7df903e0ca0f62fc6441&w=1060',
+            featured: true
+          },
+          {
+            id: 'clash-royale',
+            title: 'Clash Royale',
+            description: 'Real-time strategy card game from the makers of Clash of Clans. Duel players in fast-paced battles.',
+            image: 'https://img.freepik.com/free-photo/digital-art-style-abstract-chess-pieces_23-2151476063.jpg?t=st=1745670998~exp=1745674598~hmac=f60db23f001ae20df42ecc64832a853e8d82364b37a5943e3cc71d4cb6691c6c&w=1060',
+            featured: false
+          },
+          {
+            id: 'rise-of-kingdoms',
+            title: 'Rise of Kingdoms',
+            description: 'Choose a civilization and conquer the world in this historical strategy game with real-time battles.',
+            image: 'https://img.freepik.com/free-photo/king-with-crown-digital-art_23-2151715160.jpg?t=st=1745670923~exp=1745674523~hmac=ec6151ae5302c1ddd7251f4a6d6268337e7ed98e98cd0f12bc9a824856e3b37c&w=996',
+            featured: false
+          },
+          {
+            id: 'state-of-survival',
+            title: 'State of Survival',
+            description: 'Build your base, recruit survivors, and fight against zombies in this post-apocalyptic strategy game.',
+            image: 'https://funplus.com/wp-content/uploads/2021/05/SS_03-scaled.jpg',
+            featured: false
+          },
+          {
+            id: 'top-war',
+            title: 'Top War: Battle Game',
+            description: 'Merge your buildings and troops to upgrade them in this innovative strategy game with multiple gameplay modes.',
+            image: 'https://cdn.gamerbraves.com/2022/12/topwar-Feature.jpg',
+            featured: false
+          }
+        ],
+        action: [
+          {
+            id: 'call-of-duty-mobile',
+            title: 'Call of Duty: Mobile',
+            description: 'Experience the iconic first-person shooter on mobile with multiple game modes and classic maps.',
+            image: 'https://img.freepik.com/premium-photo/solitary-soldier-police-officer-confrontation-with-terrorists-bandits-other_314084-174.jpg?w=826',
+            featured: true
+          },
+          {
+            id: 'pubg-mobile',
+            title: 'PUBG Mobile',
+            description: 'Battle royale shooter where 100 players fight to be the last one standing on a shrinking battlefield.',
+            image: 'https://img.freepik.com/premium-photo/pubg-mobile-game_1287954-2763.jpg?w=740',
+            featured: false
+          },
+          {
+            id: 'shadow-fight-4',
+            title: 'Shadow Fight 4',
+            description: 'Master martial arts techniques and magical powers in this visually stunning fighting game.',
+            image: 'https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/1446890/capsule_616x353.jpg?t=1739258603',
+            featured: false
+          },
+          {
+            id: 'brawl-stars',
+            title: 'Brawl Stars',
+            description: 'Fast-paced 3v3 multiplayer battles with various game modes and unlockable characters.',
+            image: 'https://i.pinimg.com/736x/32/3f/62/323f62fd485e9ae8ce3d1ba251d0526e.jpg',
+            featured: false
+          },
+          {
+            id: 'free-fire',
+            title: 'Free Fire',
+            description: 'Battle royale shooter optimized for mobile with fast 10-minute matches and up to 50 players.',
+            image: 'https://mlpnk72yciwc.i.optimole.com/cqhiHLc.IIZS~2ef73/w:auto/h:auto/q:75/https://bleedingcool.com/wp-content/uploads/2022/07/Free-Fire-New-Logo-2022.jpg',
+            featured: false
+          }
+        ]
+      };
+
+      // Get featured games across all categories
+      function getFeaturedGames() {
+        let featured = [];
+        
+        Object.keys(games).forEach(category => {
+          games[category].forEach(game => {
+            if (game.featured) {
+              featured.push({...game, category: category});
+            }
+          });
+        });
+        
+        return featured;
+      }
+
+      // Get games by category
+      function getGamesByCategory(category) {
+        return games[category] || [];
+      }
+
+      // Initialize page when DOM is loaded
+      document.addEventListener('DOMContentLoaded', () => {
+        initFeaturedSlider();
+        initCategoryTabs();
+        initMobileMenu();
+        initCountdownTimer();
+      });
+
+      // Initialize Featured Games Slider
+      function initFeaturedSlider() {
+        const featuredGames = getFeaturedGames();
+        const sliderContainer = document.getElementById('featuredSlider');
+        const dotsContainer = document.getElementById('featuredDots');
+        let currentSlide = 0;
+
+        // Create slides
+        featuredGames.forEach((game, index) => {
+          // Create slide
+          const slide = document.createElement('div');
+          slide.className = `featured-slide ${index === 0 ? 'active' : ''}`;
+          slide.style.backgroundImage = `url('${game.image}')`;
+          
+          // Create slide content
+          const content = document.createElement('div');
+          content.className = 'featured-slide-content';
+          
+          // Add category badge
+          const category = document.createElement('span');
+          category.className = 'featured-game-category';
+          category.textContent = game.category;
+          content.appendChild(category);
+          
+          // Add title
+          const title = document.createElement('h3');
+          title.className = 'featured-game-title';
+          title.textContent = game.title;
+          content.appendChild(title);
+          
+          // Add description
+          const description = document.createElement('p');
+          description.className = 'featured-game-description';
+          description.textContent = game.description;
+          content.appendChild(description);
+          
+          // Add CTA button
+          const cta = document.createElement('a');
+          cta.href = '#';
+          cta.className = 'btn btn-cta';
+          cta.textContent = 'Download Now';
+          content.appendChild(cta);
+          
+          slide.appendChild(content);
+          sliderContainer.appendChild(slide);
+          
+          // Create dot
+          const dot = document.createElement('button');
+          dot.className = `slider-dot ${index === 0 ? 'active' : ''}`;
+          dot.addEventListener('click', () => goToSlide(index));
+          dotsContainer.appendChild(dot);
+        });
+        
+        // Set up controls
+        document.getElementById('prevFeatured').addEventListener('click', () => {
+          currentSlide = (currentSlide - 1 + featuredGames.length) % featuredGames.length;
+          goToSlide(currentSlide);
+        });
+        
+        document.getElementById('nextFeatured').addEventListener('click', () => {
+          currentSlide = (currentSlide + 1) % featuredGames.length;
+          goToSlide(currentSlide);
+        });
+        
+        // Auto slide every 5 seconds
+        setInterval(() => {
+          currentSlide = (currentSlide + 1) % featuredGames.length;
+          goToSlide(currentSlide);
+        }, 5000);
+        
+        // Function to go to a specific slide
+        function goToSlide(index) {
+          const slides = document.querySelectorAll('.featured-slide');
+          const dots = document.querySelectorAll('.slider-dot');
+          
+          // Remove active class from all slides and dots
+          slides.forEach(slide => slide.classList.remove('active'));
+          dots.forEach(dot => dot.classList.remove('active'));
+          
+          // Add active class to current slide and dot
+          slides[index].classList.add('active');
+          dots[index].classList.add('active');
+          
+          currentSlide = index;
+        }
+      }
+
+      // Initialize Category Tabs
+      function initCategoryTabs() {
+        const tabs = document.querySelectorAll('.tab-btn');
+        const gamesGrid = document.getElementById('gamesGrid');
+        
+        // Set default active tab to RPG
+        displayGamesByCategory('rpg');
+        
+        // Add click event to tabs
+        tabs.forEach(tab => {
+          tab.addEventListener('click', () => {
+            // Remove active class from all tabs
+            tabs.forEach(t => t.classList.remove('active'));
+            
+            // Add active class to clicked tab
+            tab.classList.add('active');
+            
+            // Display games for selected category
+            const category = tab.dataset.category;
+            displayGamesByCategory(category);
+          });
+        });
+        
+        // Function to display games by category
+        function displayGamesByCategory(category) {
+          const categoryGames = getGamesByCategory(category);
+          
+          // Clear current games
+          gamesGrid.innerHTML = '';
+          
+          // Create game cards
+          categoryGames.forEach(game => {
+            const card = document.createElement('div');
+            card.className = 'game-card';
+            
+            // Create image wrapper
+            const imageWrapper = document.createElement('div');
+            imageWrapper.className = 'game-image-wrapper';
+            
+            // Add image
+            const image = document.createElement('img');
+            image.className = 'game-image';
+            image.src = game.image;
+            image.alt = game.title;
+            imageWrapper.appendChild(image);
+            card.appendChild(imageWrapper);
+            
+            // Create content
+            const content = document.createElement('div');
+            content.className = 'game-content';
+            
+            // Add title
+            const title = document.createElement('h3');
+            title.className = 'game-title';
+            title.textContent = game.title;
+            content.appendChild(title);
+            
+            // Add description
+            const description = document.createElement('p');
+            description.className = 'game-description';
+            description.textContent = game.description;
+            content.appendChild(description);
+            
+            // Add CTA button
+            const cta = document.createElement('a');
+            cta.href = '#';
+            cta.className = 'btn btn-cta game-cta';
+            cta.textContent = 'Download Now';
+            content.appendChild(cta);
+            
+            card.appendChild(content);
+            gamesGrid.appendChild(card);
+          });
+        }
+      }
+
+      // Initialize Mobile Menu
+      function initMobileMenu() {
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        menuToggle.addEventListener('click', () => {
+          menuToggle.classList.toggle('active');
+          navMenu.classList.toggle('active');
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-item a').forEach(link => {
+          link.addEventListener('click', () => {
+            menuToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+          });
+        });
+      }
+
+      // Initialize Countdown Timer
+      function initCountdownTimer() {
+        const timerElement = document.getElementById('offerTimer');
+        if (!timerElement) return;
+        
+        // Set timer for 24 hours from now
+        const endTime = new Date();
+        endTime.setHours(endTime.getHours() + 24);
+        
+        // Update timer every second
+        const timerInterval = setInterval(() => {
+          const now = new Date();
+          const timeDiff = endTime - now;
+          
+          if (timeDiff <= 0) {
+            clearInterval(timerInterval);
+            timerElement.textContent = '00:00:00';
+            return;
+          }
+          
+          // Calculate hours, minutes, seconds
+          const hours = Math.floor(timeDiff / (1000 * 60 * 60));
+          const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+          const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+          
+          // Format timer display
+          timerElement.textContent = `${padZero(hours)}:${padZero(minutes)}:${padZero(seconds)}`;
+        }, 1000);
+        
+        function padZero(num) {
+          return num.toString().padStart(2, '0');
+        }
+      }
+    </script>
+  </body>
+</html>
